@@ -13,7 +13,7 @@ class EEPROM{
 
 private:
     int memorySize;    //amount of memory the EEPROM has to store data
-    //unsigned int memoryPointer; //pointer to the current position of free space on EEPROM's memory
+    //int memoryPointer; //pointer to the current position of free space on EEPROM's memory
     char* dataList;             //array of data
 
 public:
@@ -27,6 +27,9 @@ public:
     //reads the data from the position pointed by pos
     //returns '!' on failure
     char read(int pos);
+
+    int sizeEEPROM();
+
 };
 
 class EEPROMFactory{
@@ -37,5 +40,6 @@ public:
      * returns the adress of an EEPROM object.
      */
     EEPROM* createEEPROM(int memSize);
+    EEPROM* createEEPROM(void); //creates a default EEPROM with size 1024
 };
 #endif

@@ -4,6 +4,10 @@ EEPROM* EEPROMFactory::createEEPROM(int memSize){
     EEPROM* e1 = new EEPROM(memSize);
     return e1;
 }
+EEPROM* EEPROMFactory::createEEPROM(){
+    EEPROM* e1 = new EEPROM(1024);
+    return e1;
+}
 
 EEPROM::EEPROM(int memSize){
     memorySize = memSize;
@@ -19,4 +23,8 @@ int EEPROM::write(char data, int pos){
     if(pos >= memorySize) return 1;
     dataList[pos] = data;
     return 0;
+}
+
+int EEPROM::sizeEEPROM(){
+    return memorySize;
 }
