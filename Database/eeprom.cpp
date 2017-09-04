@@ -1,4 +1,4 @@
-#include "../Headers/eeprom.h"
+#include "eeprom.h"
 
 EEPROM* EEPROMFactory::createEEPROM(int memSize){
     EEPROM* e1 = new EEPROM(memSize);
@@ -7,15 +7,16 @@ EEPROM* EEPROMFactory::createEEPROM(int memSize){
 
 EEPROM::EEPROM(int memSize){
     memorySize = memSize;
-    memoryPointer = 0;
     dataList = new char[memorySize];
 }
 
-char EEPROM::read(int mem){
-    if(mem > memoryPointer) return '!';
-    return dataList[mem];
+char EEPROM::read(int pos){
+    if(pos > memorySize) return '!';
+    return dataList[pos];
 }
 
-int EEPROM::write(char data){
-    if(memoryPointer >= memorySize) return 0;
+int EEPROM::write(char data, int pos){
+    if(pos >= memorySize) return 1;
+    dataList[pos] = data;
+    return 0;
 }

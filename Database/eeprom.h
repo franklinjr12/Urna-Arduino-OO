@@ -1,13 +1,19 @@
 /*
  * Simulador de EEPROM para arduino feito em C++
+ * Simulation of and EEPROM to help tests.
  */
 #ifndef EEPROM_H
 #define EEPROM_H
+
+/*
+ *
+ */
+
 class EEPROM{
 
 private:
-    unsigned int memorySize;    //amount of memory the EEPROM has to store data
-    unsigned int memoryPointer; //pointer to the current position of free space on EEPROM's memory
+    int memorySize;    //amount of memory the EEPROM has to store data
+    //unsigned int memoryPointer; //pointer to the current position of free space on EEPROM's memory
     char* dataList;             //array of data
 
 public:
@@ -15,10 +21,12 @@ public:
     EEPROM(int memSize);
 
     //writes data to the current valid position of EEPROM pointed by memoryPointer
-    int write(char data);
+    //return 0 on success and 1 on failure
+    int write(char data, int pos);
 
-    //reads the data from the position pointed by mem
-    char read(int mem);
+    //reads the data from the position pointed by pos
+    //returns '!' on failure
+    char read(int pos);
 };
 
 class EEPROMFactory{

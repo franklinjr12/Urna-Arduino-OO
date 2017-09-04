@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1504529817 source:c:\users\franklin\documents\github\urna-arduino-oo\database\eeprom.cpp
+	"eeprom.h"
+
+1504529878 c:\users\franklin\documents\github\urna-arduino-oo\database\eeprom.h
+
+1504529805 source:c:\users\franklin\documents\github\urna-arduino-oo\database\main.cpp
+	<iostream>
+	<string>
+	"eeprom.h"
+
