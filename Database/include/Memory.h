@@ -1,16 +1,13 @@
 /*
- * Simulador de EEPROM para arduino feito em C++
- * Simulation of and EEPROM to help tests.
+ * Simulador de memoria para arduino feito em C++
+ * Simulation of and memory to help tests.
  */
 #ifndef EEPROM_H
 #define EEPROM_H
 
-//##########################################
-// NOT BEING USED ANYMORE
-//##########################################
 
 //***********************************************************************
-class Memory{
+class GenericMemory{
 
 /*
  * The Memory is just a list,
@@ -25,7 +22,7 @@ public:
 
     //==================================================================================================
     //used to construct an Memory, takes as parameter the amount of bytes it has
-    Memory(int memSize);
+    //GenericMemory(int memorySize);
     //==================================================================================================
 
     //==================================================================================================
@@ -40,21 +37,18 @@ public:
     //==================================================================================================
 
 
-    /*
-    //writes data to the current valid position of EEPROM pointed by memoryPointer
-    //return 0 on success and 1 on failure
-    int write(char data, int pos);
-
-    //reads the data from the position pointed by pos
-    //returns '!' on failure
-    char read(int pos);
-
-    int sizeEEPROM();
-    */
-
 };
 //***********************************************************************
 
+//***********************************************************************
+class EEPROM : public GenericMemory{
+    /*
+     * Class that represents an EEPROM of arduino
+     */
+    public:
+    EEPROM(int memorySize);
+};
+//***********************************************************************
 
 
 
@@ -71,10 +65,10 @@ public:
      * Obs: Every method returns 0 on success
      */
 
-    Memory* createMemory(int memSize);
+    GenericMemory* createMemory(int memorySize);
 
     //creates a default Memory with size 1024B
-    Memory* createMemory(void);
+    GenericMemory* createMemory(void);
 
 };
 //***********************************************************************

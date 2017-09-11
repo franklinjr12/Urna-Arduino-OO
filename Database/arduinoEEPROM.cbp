@@ -34,11 +34,11 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="database.h" />
-		<Unit filename="eeprom.cpp" />
-		<Unit filename="eeprom.h" />
 		<Unit filename="include/EEPROMManipulator.h" />
+		<Unit filename="include/Memory.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/EEPROMManipulator.cpp" />
+		<Unit filename="src/Memory.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

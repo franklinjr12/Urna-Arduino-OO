@@ -1,22 +1,25 @@
 
 #ifndef EEPROMMANIPULATOR_H
 #define EEPROMMANIPULATOR_H
-#include "../eeprom.h"
-
 
 /*
  * Class used to the user be able to operate easily the EEPROM simulation class
  * Obs: Every method returns 0 on success
  */
 
- //****************************************************************************************************
-class GenericEEPROMManipulator{
+// COMMENTING JUST TO COMPILE MAIN
 
- /*
+
+/*
+
+ //****************************************************************************************************
+class GenericMemoryManipulator{
+
+  //BEGIN THIS COMMENT
   * Generoc class that controls an EEPROM object.
   * Able just to read and write bytes into it.
   * Necessary to create real classes to manipulate EEPROM and control the memory.
-  */
+  // END THIS COMMENT
 
 private:
 
@@ -47,11 +50,11 @@ public:
 
 
 //****************************************************************************************************
-class EEPROMManipulatorSimulation : public GenericEEPROMManipulator{
+class MemoryManipulatorSimulation : public GenericMemoryManipulator{
 
     /*
      * Class used to test the program
-     */
+    //END THIS COMMENT
 
 public:
 
@@ -64,7 +67,17 @@ public:
 };
 //****************************************************************************************************
 
+//****************************************************************************************************
+class GenericUrnDatabaseSetup{
+ //BEGIN THIS COMMENT
+ * Class used to make the setup of the memory
+ //END THIS COMMENT
 
+private:
+    GenericEEPROMManipulator* memoryControler;
+public:
+    virtual int assingManipulator(GenericEEPROMManipulator* controler) = 0;
+};
 
 
  /*
@@ -101,4 +114,6 @@ class EEPROMManipulator
 
 };
 */
+
+
 #endif // EEPROMMANIPULATOR_H
