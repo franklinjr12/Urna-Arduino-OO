@@ -7,6 +7,11 @@
 using namespace std;
 
 
+/* STEPS
+ * EEPROM (simulated) class - OK
+ * EEPROMFactory class - OK
+ * Generic EEPROMManipulator - In Progress
+ */
 
 int main(){
 

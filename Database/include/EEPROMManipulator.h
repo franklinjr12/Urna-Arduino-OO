@@ -1,14 +1,73 @@
+
 #ifndef EEPROMMANIPULATOR_H
 #define EEPROMMANIPULATOR_H
 #include "../eeprom.h"
-#include <string>
 
 
-using namespace std;
 /*
  * Class used to the user be able to operate easily the EEPROM simulation class
+ * Obs: Every method returns 0 on success
  */
 
+ //****************************************************************************************************
+class GenericEEPROMManipulator{
+
+ /*
+  * Generoc class that controls an EEPROM object.
+  * Able just to read and write bytes into it.
+  * Necessary to create real classes to manipulate EEPROM and control the memory.
+  */
+
+private:
+
+    // Chip the Manipulator controls
+    EEPROM* memory;
+
+public:
+
+     //================================================================================================
+     // Writes a character at specific position of EEPROM
+     virtual int writeCharToMemory(char letter, int position) = 0;
+     //================================================================================================
+
+
+     //================================================================================================
+     // Reads the character at specific position of EEPROM
+     virtual char readCharFromMemory(int position) = 0;
+     //================================================================================================
+
+     //================================================================================================
+     // Give the manipulator an EEPROM for it to operate
+     virtual int assingEEPROMToManipulator(EEPROM* eepromChip) = 0;
+     //================================================================================================
+
+};
+//****************************************************************************************************
+
+
+
+//****************************************************************************************************
+class EEPROMManipulatorSimulation : public GenericEEPROMManipulator{
+
+    /*
+     * Class used to test the program
+     */
+
+public:
+
+    //===================================================================
+    // just giving body to GenericEEPROMManipulator for tests
+    int writeCharToMemory(char letter, int position);
+    char readCharFromMemory(int position);
+    int assingEEPROMToManipulator(EEPROM* eepromChip);
+    //===================================================================
+};
+//****************************************************************************************************
+
+
+
+
+ /*
 class EEPROMManipulator
 {
     public:
@@ -41,5 +100,5 @@ class EEPROMManipulator
         int memControl;
 
 };
-
+*/
 #endif // EEPROMMANIPULATOR_H

@@ -5,10 +5,10 @@
 #ifndef EEPROM_H
 #define EEPROM_H
 
-/*
- *
- */
+// TESTED
+// OK
 
+//***********************************************************************
 class EEPROM{
 
 /*
@@ -52,7 +52,14 @@ public:
     */
 
 };
+//***********************************************************************
 
+
+
+
+
+
+//***********************************************************************
 class EEPROMFactory{
 public:
 
@@ -60,6 +67,7 @@ public:
      * Class used to create an EEPROM object
      * necessery to pass the amount of memory that the EEPROM has
      * returns the adress of an EEPROM object.
+     * Obs: Every method returns 0 on success
      */
 
     EEPROM* createEEPROM(int memSize);
@@ -68,4 +76,6 @@ public:
     EEPROM* createEEPROM(void);
 
 };
+//***********************************************************************
+
 #endif

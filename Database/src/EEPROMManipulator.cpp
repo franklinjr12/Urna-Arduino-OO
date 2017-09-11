@@ -1,5 +1,39 @@
 #include "EEPROMManipulator.h"
 
+//********************************************************************************************************
+// Methods from EEPROMManipulatorSimulation
+
+//========================================================================================================
+int EEPROMManipulatorSimulation::writeCharToMemory(char letter, int position){
+    if(memory == 0) return -1;  //case the manipulator has no EEPROM assingned to it
+    if(memory->memorySize < position) return -1; //case the position doesnt exists in the memory
+    memory->dataList[position] = letter;
+    return 0;
+}
+//========================================================================================================
+
+
+//========================================================================================================
+char EEPROMManipulatorSimulation::readCharFromMemory(int position){
+    if(memory->memorySize < position) return '\0'; //case the position doesnt exists in the memory
+    return memory->dataList[position];
+}
+//========================================================================================================
+
+
+
+//========================================================================================================
+int EEPROMManipulatorSimulation::assingEEPROMToManipulator(EEPROM* eepromChip){
+    if(eepromChip == 0) return -1;
+    memory = eepromChip;
+    return 0;
+}
+//========================================================================================================
+
+//********************************************************************************************************
+
+/*
+
 EEPROMManipulator::EEPROMManipulator(EEPROM* ep1){
     simulatedEEPROM = ep1;
     memControl = 0;
@@ -41,3 +75,4 @@ char* EEPROMManipulator::readDataBlock(int pos, int end){
     }
     return result;
 }
+*/

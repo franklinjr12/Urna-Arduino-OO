@@ -1,5 +1,9 @@
 #include "eeprom.h"
 
+// TESTED
+// OK
+
+//****************************************************************************************************
 // EEPROMFactory methods
 
 //==================================================================================================
@@ -18,13 +22,28 @@ EEPROM* EEPROMFactory::createEEPROM(){
     return e1;
 }
 //==================================================================================================
+// End of EEPROMFactory methods
+//****************************************************************************************************
 
 
+
+
+
+
+//****************************************************************************************************
+// EEPROM methods.
+
+//==================================================================================================
+// Constructor of EEPROM object,
+//takes the memory size as parameter to create the dataList with that size.
 EEPROM::EEPROM(int memSize){
     memorySize = memSize;
     dataList = new char[memorySize];
 }
+//==================================================================================================
 
+// Unused methods due to change on the structure of the classes.
+/*
 char EEPROM::read(int pos){
     if(pos > memorySize) return '!';
     return dataList[pos];
@@ -39,3 +58,4 @@ int EEPROM::write(char data, int pos){
 int EEPROM::sizeEEPROM(){
     return memorySize;
 }
+*/
