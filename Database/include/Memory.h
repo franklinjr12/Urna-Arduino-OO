@@ -7,7 +7,7 @@
 
 
 //***********************************************************************
-class GenericMemory{
+class Memory{
 
 /*
  * The Memory is just a list,
@@ -40,14 +40,17 @@ public:
 };
 //***********************************************************************
 
+
+
 //***********************************************************************
+/*
 class EEPROM : public GenericMemory{
-    /*
-     * Class that represents an EEPROM of arduino
-     */
+
+     //Class that represents an EEPROM of arduino
     public:
     EEPROM(int memorySize);
 };
+*/
 //***********************************************************************
 
 
@@ -65,10 +68,10 @@ public:
      * Obs: Every method returns 0 on success
      */
 
-    GenericMemory* createMemory(int memorySize);
+    Memory* createMemory(int memorySize);
 
     //creates a default Memory with size 1024B
-    GenericMemory* createMemory(void);
+    Memory* createMemory(void);
 
 };
 //***********************************************************************

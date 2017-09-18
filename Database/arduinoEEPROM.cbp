@@ -36,9 +36,13 @@
 		<Unit filename="database.h" />
 		<Unit filename="include/EEPROMManipulator.h" />
 		<Unit filename="include/Memory.h" />
+		<Unit filename="include/MemoryControler.h" />
+		<Unit filename="include/Urn.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/EEPROMManipulator.cpp" />
 		<Unit filename="src/Memory.cpp" />
+		<Unit filename="src/MemoryControler.cpp" />
+		<Unit filename="src/Urn.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

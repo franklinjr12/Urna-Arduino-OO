@@ -4,20 +4,33 @@
 
 1505131839 c:\users\franklin\documents\github\urna-arduino-oo\database\eeprom.h
 
-1505139128 source:c:\users\franklin\documents\github\urna-arduino-oo\database\main.cpp
+1505618375 source:c:\users\franklin\documents\github\urna-arduino-oo\database\main.cpp
 	<iostream>
 	<string>
-	"memory"
-	"eeprommanipulator.h"
-	<string.h>
+	"memory.h"
+	"MemoryControler.h"
+	"Urn.h"
 
 1505139597 c:\users\franklin\documents\github\urna-arduino-oo\database\include\eeprommanipulator.h
 
 1505139492 source:c:\users\franklin\documents\github\urna-arduino-oo\database\src\eeprommanipulator.cpp
 	"EEPROMManipulator.h"
 
-1505140231 source:c:\users\franklin\documents\github\urna-arduino-oo\database\src\memory.cpp
+1505613704 source:c:\users\franklin\documents\github\urna-arduino-oo\database\src\memory.cpp
 	"Memory.h"
 
-1505140095 c:\users\franklin\documents\github\urna-arduino-oo\database\include\memory.h
+1505604874 c:\users\franklin\documents\github\urna-arduino-oo\database\include\memory.h
+
+1505607166 c:\users\franklin\documents\github\urna-arduino-oo\database\include\memorycontroler.h
+	"memory.h"
+
+1505614074 source:c:\users\franklin\documents\github\urna-arduino-oo\database\src\memorycontroler.cpp
+	"MemoryControler.h"
+
+1505616128 source:c:\users\franklin\documents\github\urna-arduino-oo\database\src\urn.cpp
+	"Urn.h"
+
+1505614023 c:\users\franklin\documents\github\urna-arduino-oo\database\include\urn.h
+	"Memory.h"
+	"MemoryControler.h"
 

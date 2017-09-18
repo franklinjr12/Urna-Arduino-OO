@@ -4,23 +4,30 @@
 //*************************************************************************************
 // EEPROM class
 
+/*
+
 EEPROM::EEPROM(int memorySize){
     if(memorySize < 1) return -1;
     dataList = new char[memorySize];
 }
 
+*/
+
 //*************************************************************************************
 
 //*************************************************************************************
 // MemoryFactory class
-GenericMemory* MemoryFactory::createMemory(int memorySize){
+Memory* MemoryFactory::createMemory(int memorySize){
     if(memorySize < 1) return 0;
-    GenericMemory* memo = new GenericMemory(memorySize);
+    Memory* memo = new Memory;
+    memo->dataList = new char[memorySize];
     return memo;
 }
 
-GenericMemory* MemoryFactory::createMemory(){
-    GenericMemory* memo = new GenericMemory(1024);
+Memory* MemoryFactory::createMemory(){
+    Memory* memo = new Memory;
+    memo->memorySize = 1024;
+    memo->dataList = new char[1024];
     return memo;
 }
 //*************************************************************************************
