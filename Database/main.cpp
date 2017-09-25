@@ -12,6 +12,7 @@ using namespace std;
 // implementando o cabeçalho urn
 // list candidates - OK
 // vote - OK
+// implementar no arduino
 
 int main(){
 
@@ -37,16 +38,23 @@ int main(){
     us1->addCandidate(&cand1[0], cand1.size());
     //===============================
 
-    //need to listing candidates in the memory
+    //listing candidates in the memory
     char* s = ue1->listCandidates();
     if(s) cout << s << endl;
     else cout << "erro";
-
+    //====================================
 
     //vote
     for(int i = 1; i <= 11; i++) ue1->vote(&cand1[0], cand1.size());
+    if(ue1->vote("Gay", 3)) cout << "Voto realizando com sucesso\n";
+    else cout << "Candidato nao existe\n";
+    if(ue1->vote("Airton", 6)) cout << "Voto realizando com sucesso\n";
+    else cout << "Candidato nao existe\n";
+
     s = ue1->listCandidates();
     cout << s << endl;
+    //===============================================
+
 
     return 0;
 }
