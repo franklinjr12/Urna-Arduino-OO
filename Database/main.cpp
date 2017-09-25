@@ -11,7 +11,7 @@ using namespace std;
 // Implementando o cabeçalho memoryControler - OK
 // implementando o cabeçalho urn
 // list candidates - OK
-// implementando vote
+// vote - OK
 
 int main(){
 
@@ -44,6 +44,9 @@ int main(){
 
 
     //vote
+    for(int i = 1; i <= 11; i++) ue1->vote(&cand1[0], cand1.size());
+    s = ue1->listCandidates();
+    cout << s << endl;
 
     return 0;
 }
