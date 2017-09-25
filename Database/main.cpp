@@ -10,29 +10,40 @@ using namespace std;
 
 // Implementando o cabeçalho memoryControler - OK
 // implementando o cabeçalho urn
-// parei em adicionar um cadidato
+// list candidates - OK
+// implementando vote
 
 int main(){
 
+    //instanciating objects
     MemoryFactory mf;
     Memory* m1 = mf.createMemory();
     MemoryControler* mc1 = new MemoryControlerTest;
-
     UrnElection* ue1 = new UrnElection(mc1, m1);
     UrnSetup* us1 = new UrnSetup(mc1, m1);
+    //===============================
+
+
+    //seting up the memory
     us1->newElection();
+    //===============================
 
-    string cand1 = "Agnaldo";
-    string cand2 = "oie";
-
+    //adding candidates
+    string cand1 = "Airton";
     us1->addCandidate(&cand1[0], cand1.size());
-    us1->addCandidate(&cand2[0], cand2.size());
+    cand1 = "Joao";
+    us1->addCandidate(&cand1[0], cand1.size());
+    cand1 = "Frank";
+    us1->addCandidate(&cand1[0], cand1.size());
+    //===============================
+
+    //need to listing candidates in the memory
+    char* s = ue1->listCandidates();
+    if(s) cout << s << endl;
+    else cout << "erro";
 
 
-   char* a = ue1->listCandidates();
-    for(int i = 0; i < 10; i++)
-        cout << a[i];
-    cout << endl;
+    //vote
 
     return 0;
 }

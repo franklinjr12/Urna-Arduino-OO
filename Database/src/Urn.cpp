@@ -26,9 +26,6 @@ int UrnSetup::newElection(){
     return 0;
 }
 
-//consertar aqui
-//adicionar o segundo candidato
-
 int UrnSetup::addCandidate(char* name, int nameSize){
      //error tests
     if(memory == 0) return -1;
@@ -38,7 +35,7 @@ int UrnSetup::addCandidate(char* name, int nameSize){
     int pos = 0;    //to mark the position to write the name
     while(pos < memory->memorySize){
         if(memControler->read(pos) == '!' && memControler->read(pos+1) == '!'){ //finding valid position
-            pos++;  //to let one '!' behind
+            //pos++;  //to let one '!' behind
             //writing the candidate name
             for(int i = 0; i < nameSize; i++){
                 memControler->write(name[i], pos++);
@@ -67,6 +64,8 @@ UrnElection::UrnElection(MemoryControler* mc, Memory* m){
     memControler->assign(memory);
 }
 
+
+
 char* UrnElection::listCandidates(){
     // put all candidates and it's votes in a string
     //error tests
@@ -76,31 +75,34 @@ char* UrnElection::listCandidates(){
     //counting size for the string
     int listSize = 0;
     int pos = 0;
-    while(memControler->read(pos) != '!' && memControler->read(pos+1) != '!'){
-        if(memControler->read(pos) != '!'){
-            while(memControler->read(pos) != '!'){
-                listSize++;
-                pos++;
-            }
-        }
+    while(memControler->read(pos) != '!'){ //&& memControler->read(pos+1) != '!'){
+        listSize++;
         pos++;
     }// end of while
+
 
     //putting the names in a list
     pos = 0;
     int aux = 0;
-    char* namesList = new char[listSize+1];
-
-    while(memControler->read(pos) != '!' && memControler->read(pos+1) != '!'){
-        if(memControler->read(pos) != '!'){
-            while(memControler->read(pos) != '!'){
-                cout << memControler->read(pos);
-                namesList[aux++] = memControler->read(pos++);
-            }
-        }
-        pos++;
+    char* namesList = new char[listSize+1]; //the "+1" is for the '\0' char
+    while(memControler->read(pos) != '!'){ //&& memControler->read(pos+1) != '!'){
+        namesList[aux++] = memControler->read(pos++);
     }// end of while
+
+    //putting the '\0' end char in the final position
+    namesList[listSize] = '\0';
 
     return namesList;
 }
 
+
+int UrnElection::vote(char* name, int nameSize){
+     //error tests
+    if(memory == 0) return -1;
+    if(memControler == 0) return -1;
+
+    //schearching on the memory for the name
+    while(memControler->read(pos) != '!'){
+
+    }//end of while
+}
