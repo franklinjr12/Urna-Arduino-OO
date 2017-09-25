@@ -30,4 +30,10 @@ Memory* MemoryFactory::createMemory(){
     memo->dataList = new char[1024];
     return memo;
 }
+
+Memory* MemoryFactory::createMemoryArduino(int memorySize){
+    Memory* memo = new Memory;
+    memo->memorySize = memorySize;
+    memo->dataList = new char[1];   //just no to be null
+}
 //*************************************************************************************

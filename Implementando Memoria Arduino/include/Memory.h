@@ -73,6 +73,9 @@ public:
     //creates a default Memory with size 1024B
     Memory* createMemory(void);
 
+    //specific for arduino, because it doesn't need to allocate the bytes
+    Memory* createMemoryArduino(int memorySize);
+
 };
 //***********************************************************************
 
