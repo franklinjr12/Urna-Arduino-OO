@@ -65,10 +65,32 @@ Give an example
 
 ### INTERFACE GRAFICA
 
-Explain what these tests test and why
+Para começar, acrescente a biblioteca do Display LCD no header do seu código e defina os pinos que serão utilizados no Arduino
 
 ```
-Give an example
+#include <LiquidCrystal.h>
+//Define os pinos que serão utilizados para ligação ao display
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+```
+
+A estrutura do método criaMensagem está definida abaixo:
+
+```
+criaMensagem(int linha, int coluna, int tempoDespera, char* mensagem);
+Linha: 0 - primeira linha do display, 1 - segunda linha do display(por padrão já esta em 0);
+Coluna: As colunas variam entre 0 - 15 colunas;
+Tempo de Espera: O tempo é em milisegundos;
+Mensagem: Crie uma váriavel do tipo char com a sua mensagem;
+```
+
+
+Para utilizar os métodos da classe basta criar um ponteiro para a mesma, passar um texto no formato char e chamar o método criaMensagem();
+```
+InterfaceGrafica p1;//instancia um ponteiro para a classe interfaceGrafica
+char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
+p1.criaMensagem(0,0,1000,msg1);//instancia o metodo criarmensagem
+
+Se um texto tiver mais de 16 colunas, ele será quebrado aonde ultrapassou para ser mostrado em outra linha.
 ```
 
 
@@ -84,8 +106,9 @@ Give an example
 ## Ferramentas utilizadas
 
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software) - Arduino IDE
-* [Thinkercad](http://www.tinkercad.com/) - Web Circuit Simulator
 * [Code::Blocks](http://www.codeblocks.org/downloads) - Code::Blocks - IDE C/C++ 
+* [Sublime Text](https://www.sublimetext.com/) - Sublime Text
+* [Thinkercad](http://www.tinkercad.com/) - Web Circuit Simulator
 
 ## Contribuição
 
