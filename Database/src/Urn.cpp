@@ -1,7 +1,5 @@
 #include "Urn.h"
 
-#include <iostream>
-using namespace std;
 
 //****************************************************************
 //Implementations of UrnSetup
@@ -100,9 +98,37 @@ int UrnElection::vote(char* name, int nameSize){
      //error tests
     if(memory == 0) return -1;
     if(memControler == 0) return -1;
+    if(name == 0) return -1;
 
+    int flag = 0;
+    int i;
+    int pos = 0;
     //schearching on the memory for the name
     while(memControler->read(pos) != '!'){
+        if(memControler->read(pos) == name[0]){
+            for(i = 0; i < nameSize; i++){
+                if(name[i] == memControler->read(pos++));
+                else break;
+                if(i == nameSize-1) flag = 1;
+            }//end of for
+        }//end of if
 
+        if(flag){ //the name has been found
+            //increase the vote
+            char number = memControler->read(pos+1);
+            if(number < '9')
+                memControler->write(number+1, pos+1);
+            else{
+                number = memControler->read(pos);
+                number++;
+                memControler->write(number, pos);
+                memControler->write('0', pos+1);
+            }
+            return 0;
+        }
+
+        pos++;
     }//end of while
+
+    return -1;
 }
