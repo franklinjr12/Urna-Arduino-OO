@@ -3,7 +3,7 @@
 
 #include "Memory.h"
 #include "MemoryControler.h"
-
+#include "Arduino.h"
 
 class UrnSetup{
 

@@ -2,6 +2,9 @@
 #define MEMORYCONTROLER_H
 
 #include "memory.h"
+#include "Arduino.h"
+#include <EEPROM.h>
+
 
 class MemoryControler{
     // class responsable to manipulate the memory
@@ -33,7 +36,7 @@ class MemoryControlerTest : public MemoryControler{
 
 };
 
-class MemoryControlerArduino : MemoryControler{
+class MemoryControlerArduino : public MemoryControler{
     public:
         int write(char letter, int position);
         char read(int position);

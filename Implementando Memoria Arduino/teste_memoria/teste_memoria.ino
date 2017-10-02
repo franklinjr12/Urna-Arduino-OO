@@ -1,8 +1,8 @@
-#include "memory.h"
-#include "MemoryControler.h"
-#include "Urn.h"
+#include <Urn.h>
+#include <EEPROM.h>
 
 
+    
 
 void setup()
 {
@@ -27,14 +27,25 @@ void setup()
     //====================================================================
 
 
-    //add candidates here
-    //urnConfiguration->addCandidate("name", name.size());
+    //nomes de candidatos para testes
+    String nomes[] = {"Franklin","Airton","Lucas","Joao"};
     //====================================================================
 
+    
+    //add candidates here
+    //urnConfiguration->newElection();
+    //urnConfiguration->addCandidate("nome", nome.length());
+    //delete urnConfiguration;
+    //====================================================================
 
+    urnConfiguration->newElection();
+    for(int i = 0; i < 4; i++)
+      urnConfiguration->addCandidate(nomes[i].c_str(), nomes[i].length());
+    delete urnConfiguration;
 }
 
 void loop()
 {
 
 }
+
