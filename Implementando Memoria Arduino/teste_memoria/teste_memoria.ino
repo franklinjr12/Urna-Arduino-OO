@@ -10,40 +10,39 @@ UrnSetup*         urnConfiguration;
 UrnElection*      unrElection;
 //====================================================================
 
-char* candidatesList;
-int i = 0;
-String cand = "Franklin";
+//auxiliars variables
+char* candidatesList; //variable to store candidates and its votes
+int i = 0;  //for counting loops
+String cand = "Franklin"; //candidate to be voted
+//====================================================================
+
 
 void setup()
 {
-    Serial.begin(9600);
+    Serial.begin(9600); //for displaing info on IDE screen
   
     //making the instance of the memory
-    //MemoryFactory* memoryCreator = new MemoryFactory;
     memoryCreator = new MemoryFactory;
     arduinoMemory = memoryCreator->createMemoryArduino(40);
     delete memoryCreator;
     //====================================================================
 
     //making the instance of the memoryControler
-    //MemoryControler* arduinoMemoryControler = new MemoryControlerArduino;
     arduinoMemoryControler = new MemoryControlerArduino;
     arduinoMemoryControler->assign(arduinoMemory);
     //====================================================================
 
 
     //making the instance of the Setup object
-    //UrnSetup* urnConfiguration = new UrnSetup(arduinoMemoryControler, arduinoMemory);
     urnConfiguration = new UrnSetup(arduinoMemoryControler, arduinoMemory);
     //====================================================================
 
     //making the instance of Election object
-    //UrnElection* unrElection = new UrnElection(arduinoMemoryControler, arduinoMemory);
     unrElection = new UrnElection(arduinoMemoryControler, arduinoMemory);
     //====================================================================
 
 
-    //nomes de candidatos para testes
+    //candidates names for tests
     String nomes[] = {"Franklin","Airton","Lucas","Joao"};
     //====================================================================
 
@@ -54,6 +53,9 @@ void setup()
     //delete urnConfiguration;
     //====================================================================
 
+
+    //part of the code responsable for cleaning the memory and adding the candidates
+    //obs: need to be executed only once
    /*
     if(!urnConfiguration->newElection()) Serial.println("Memoria limpa");
     else  Serial.println("Nao foi possivel limpar a memoria");
@@ -73,20 +75,26 @@ void setup()
 void loop()
 { 
 
+  //putting the string of candidates and its votes into a variable
   candidatesList = unrElection->listCandidates();
   if(candidatesList == 0)  Serial.println("Erro ao pegar candidatos");
   else                     Serial.println("Lista de candidatos ok");
-  
+ //====================================================================
+
+
+  //printing the candidates in the pc screen with serial of arduino IDE
   while(candidatesList[i] != '\0')
   {
     Serial.print(candidatesList[i++]);
   }
   i = 0;
+  //====================================================================
 
+  //making a vote into one candidate just to test
   if(!unrElection->vote(cand.c_str(), cand.length())) Serial.println("\nVoto realizado com sucesso");
   else                                               Serial.println("\nNao foi possivel realizar o voto");
+  //====================================================================
   
-  Serial.println("\nTeste");
   delay(1000);
 }
 
