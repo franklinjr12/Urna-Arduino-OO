@@ -1,18 +1,11 @@
 /* Desenvolvido por Lucas Oliveira */
-#include <LiquidCrystal.h>
+#include "interfaceGrafica.h"
+#include <cstring>
 
-//Define os pinos que serão utilizados para ligação ao display
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+using namespace std;
 
-/* CLASSE INTERFACE GRAFICA */
-class InterfaceGrafica{
-  public:
-    void criaMensagem(int linha, int coluna, int delay, char* mensagem);
-  
-};
-
-//metodo criar mensagem
-void InterfaceGrafica::criaMensagem(int linha, int coluna, int espera, char* mensagem){
+//metodo mostrar Mensagem
+void InterfaceGrafica::mostrarMensagem(int linha, int coluna, int espera, char* mensagem){
 	int tamanhoReal = strlen(mensagem);
   	//verifica se a mensagem passada tem menos do que 16 caracteres
   	//se tiver menos que 16 ele vai printar normalmente
@@ -21,7 +14,7 @@ void InterfaceGrafica::criaMensagem(int linha, int coluna, int espera, char* men
 	  //Limpa a tela
 	  lcd.clear();
 	  //Posiciona o cursor na coluna, linha;
-	  lcd.setCursor(coluna, linha);
+	  lcd.setCursor(0, 0);
 	  //Envia o texto entre aspas para o LCD
 	  lcd.print(mensagem);
 	  //tempo de espera para a mensagem
@@ -63,21 +56,4 @@ void InterfaceGrafica::criaMensagem(int linha, int coluna, int espera, char* men
 	}
 	
 }
-//fim metodo criar mensagem
-
-/* FIM CLASSE INTERFACE GRAFICA */
-
-
-void setup()
-{
-  //Define o número de colunas e linhas do LCD
-  lcd.begin(16, 2);
-}
-
-void loop()
-{
-  InterfaceGrafica p1;//instancia um ponteiro para a classe interfaceGrafica
-  char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
-  p1.criaMensagem(0,0,1000,msg1);//instancia o metodo criarmensagem
-
-}
+//fim metodo
