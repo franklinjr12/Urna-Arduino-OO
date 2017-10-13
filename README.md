@@ -77,12 +77,11 @@ A estrutura do método criaMensagem está definida abaixo:
 
 ```
 criaMensagem(int linha, int coluna, int tempoDespera, char* mensagem);
+```
 Linha: 0 - primeira linha do display, 1 - segunda linha do display(por padrão já esta em 0);
 Coluna: As colunas variam entre 0 - 15 colunas;
 Tempo de Espera: O tempo é em milisegundos;
-Mensagem: Crie uma váriavel do tipo char com a sua mensagem;
-```
-
+Mensagem: Crie uma váriavel do tipo char com a sua mensagem.
 
 Para utilizar os métodos da classe basta criar um ponteiro para a mesma, passar um texto no formato char e chamar o método criaMensagem();
 ```
