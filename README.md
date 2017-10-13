@@ -89,9 +89,8 @@ Para utilizar os métodos da classe basta criar um ponteiro para a mesma, passar
 InterfaceGrafica p1;//instancia um ponteiro para a classe interfaceGrafica
 char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
 p1.criaMensagem(0,0,1000,msg1);//instancia o metodo criarmensagem
-
-Se um texto tiver mais de 16 colunas, ele será quebrado aonde ultrapassou para ser mostrado em outra linha.
 ```
+Se um texto conter mais de 16 colunas, ele será quebrado aonde ultrapassou para ser mostrado em outra linha.
 
 
 ### INTERFACE TECLADO
