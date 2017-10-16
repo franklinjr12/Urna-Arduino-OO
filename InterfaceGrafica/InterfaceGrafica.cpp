@@ -1,6 +1,7 @@
 /* Desenvolvido por Lucas Oliveira */
 #include "InterfaceGrafica.h"
 #include <cstring>
+#define ESPERA 2000;
 
 using namespace std;
 
