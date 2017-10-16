@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* Desenvolvido por Lucas Oliveira */
 #include "InterfaceGrafica.h"
 #include <cstring>
