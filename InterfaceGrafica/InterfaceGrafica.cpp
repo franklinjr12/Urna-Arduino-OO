@@ -1,10 +1,7 @@
 /* Desenvolvido por Lucas Oliveira */
 #include "InterfaceGrafica.h"
-<<<<<<< HEAD
-=======
 #include <cstring>
 #define ESPERA 2000;
->>>>>>> 452c709e995cdae47da00a11351a8d7c3276a954
 
 //contador de caracteres
 int strlen(char *str){
@@ -79,7 +76,6 @@ void InterfaceGrafica::mensagemDisplay(char *msg){
   //chama o metodo criar mensagem
   criaMensagem(0,0,2000,msg);
 }
-<<<<<<< HEAD
 
 //metodo mensagemDisplaySemEspera
 void InterfaceGrafica::mensagemDisplaySemEspera(char *msg){
@@ -97,6 +93,3 @@ void InterfaceGrafica::setLCD(int *p1, int *p2, int *p3, int *p4, int *p5, int *
 LiquidCrystal* InterfaceGrafica::getLCD(){
 	return this->lcd;
 }
-
-=======
->>>>>>> 452c709e995cdae47da00a11351a8d7c3276a954
