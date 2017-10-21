@@ -14,7 +14,6 @@ class InterfaceGrafica{
     void criaMensagem(int linha, int coluna, int delay, char* mensagem);
     
     void mensagemDisplay(char *msg);
-<<<<<<< HEAD
     void mensagemDisplaySemEspera(char *msg);
 
     //GET E SET LCD
@@ -31,6 +30,4 @@ public:
 	DisplayLCD16x2(int *p1, int *p2,int *p3, int *p4,int *p5, int *p6){
 		setLCD(p1,p2,p3,p4,p5,p6);
 	}
-=======
->>>>>>> 452c709e995cdae47da00a11351a8d7c3276a954
 };
