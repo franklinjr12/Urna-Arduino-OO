@@ -13,11 +13,12 @@ void setup()
 
 void loop()
 {
+  /* COMO UTILIZAR A CLASSE */
+  //1º crie uma varia do tipo char com o conteudo da mensagem;
   char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
-<<<<<<< HEAD
-  p->mensagemDisplay(msg1);//instancia o metodo criarmensagem
+  //2º aponte o ponteiro para o metodo mensagemDisplay passando a variavel da mensagem criada
+  //o mensagemDisplay ja contem um tempo embutido, o mensagemDisplaySemEspera voce coloca o delay apos a chamada do metodo
+  p->mensagemDisplay(msg1);
+  p->mensagemDisplaySemEspera(msg1);
+  delay(2000);
 }
-=======
-  p1.mensagemDisplay(msg1);//instancia o metodo criarmensagem
-}
->>>>>>> 452c709e995cdae47da00a11351a8d7c3276a954
