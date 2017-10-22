@@ -32,8 +32,6 @@ public:
   char fisher();
 };
 
-//#define namespace Keyreader;
-
 Keyreader::Keyreader(byte rows, byte cols)
 {
   this->Rows = rows;
