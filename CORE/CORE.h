@@ -1,3 +1,5 @@
+/*DESENVOLVIDO POR AIRTON RAMOS*/
+
 #ifndef CORE_H
 #define CORE_H
 

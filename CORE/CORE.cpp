@@ -1,8 +1,11 @@
+/*DESENVOLVIDO POR AIRTON RAMOS*/
+
 #include "CORE.h"
 
 void CORE::iniciarUrna(){
-KeyboardController* kbc;
-    UrnKeyboard* teclado;
+
+  KeyboardController* kbc;
+  UrnKeyboard* teclado;
   DisplayLCD16x2 *p = new DisplayLCD16x2(12, 11, 5, 4, 3, 2); //instancio a classe Display LCD 16x2
   char msg1[] = "Bem Vindo a Urna OO"; // MENSAGEM DE INICIO DA URNA
   p->mensagemDisplaySemEspera(msg1);
