@@ -1,83 +1,36 @@
 /* Desenvolvido por Lucas Oliveira */
-#include <LiquidCrystal.h>
-
-//Define os pinos que serão utilizados para ligação ao display
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
-
-/* CLASSE INTERFACE GRAFICA */
-class InterfaceGrafica{
-  public:
-    void criaMensagem(int linha, int coluna, int delay, char* mensagem);
-  
-};
-
-//metodo criar mensagem
-void InterfaceGrafica::criaMensagem(int linha, int coluna, int espera, char* mensagem){
-	int tamanhoReal = strlen(mensagem);
-  	//verifica se a mensagem passada tem menos do que 16 caracteres
-  	//se tiver menos que 16 ele vai printar normalmente
-	if(strlen(mensagem) < 16){
-
-	  //Limpa a tela
-	  lcd.clear();
-	  //Posiciona o cursor na coluna, linha;
-	  lcd.setCursor(coluna, linha);
-	  //Envia o texto entre aspas para o LCD
-	  lcd.print(mensagem);
-	  //tempo de espera para a mensagem
-	  delay(espera);
-	  lcd.clear();
-
-	//caso a mensagem seja maior que 16 caracteres sera quebrada para ser printada em duas linhas
-	//sera criada uma variavel auxiliar que sera passado os caracteres que faltaram para imprimir
-	}else{
-
-		int tamanhoAux = tamanhoReal - 16;//define o tamanho do novo vetor sendo o tamanho dos caracteres restantes
-		char aux1[16], aux2[tamanhoAux];
-
-		//aux 1
-		for(int i = 0; i < 16; i++){
-			//copia os caracteres restantes para o novo vetor
-			aux1[i] = mensagem[i];
-		}
-
-		//aux2
-		for(int i = 0, j = 16; i < tamanhoAux, j <= tamanhoReal; i++, j++){
-			//copia os caracteres restantes ara o novo vetor
-			aux2[i] = mensagem[j];
-		}
-
-		//Limpa a tela
-		lcd.clear();
-
-		lcd.setCursor(0, 0);
-		lcd.print(aux1);
-
-		lcd.setCursor(0, 1);
-		lcd.print(aux2);
-
-		//tempo de espera para a mensagem
-		delay(espera);
-		lcd.clear();
-
-	}
-	
-}
-//fim metodo criar mensagem
-
-/* FIM CLASSE INTERFACE GRAFICA */
-
+#include <InterfaceGrafica.h>
+/* MUDANÇAS */
+/* 
+- Antes, estavamos utilizando a função propria do Arduino para criar uma váriavel do tipo LiquidCrystal, que era a seguinte:
+"LiquidCrystal lcd(12, 11, 10, 5, 4, 3, 2);" Pelo fato do tratamento da mensagem acontecer separadamente no cód. cpp da classe Interface Grafica, ele necessitava da mesma 
+variável LiquidCrystal, por isso, criamos uma tela LiquidCrystal com o " new DisplayLCD16x2(12, 11, 5, 4, 3, 2); " e chamamos ela
+em " LiquidCrystal *tela = p->getLCD(); " para ser utilizada internamente aqui no nosso código do arduino.
+- A unica diferença agora é que a tela é um ponteiro que aponta p/ a mesma tela LCD utilizada no cód. da classe. Para utilizar os métodos
+da Interface gráfica como mensagemDisplay é só utilizar o ponteiro criado para instanciar a classe. que no caso abaixo foi o "p".
+- Agora não precisa mais incluir a biblioteca LiquidCrystal no cabeçalho do código, pois ele ja está incluso nos códigos das classes.
+*/
+/* MUDANÇAS */
+DisplayLCD16x2 *p = new DisplayLCD16x2(12, 11, 5, 4, 3, 2); //instancio a classe Display LCD 16x2
+LiquidCrystal *tela = p->getLCD();//crio um ponteiro e aponto para o lcd da classe interface grafica
+/* preciso apontar para o mesmo lcd pelo fato do tratamento das mensagem acontecerem externamente */ 
 
 void setup()
 {
   //Define o número de colunas e linhas do LCD
-  lcd.begin(16, 2);
+  //essa parte é padrão o arduino para se poder trabalhar com o LiquidCrystal
+  tela->begin(16, 2);
+
 }
 
 void loop()
 {
-  InterfaceGrafica p1;//instancia um ponteiro para a classe interfaceGrafica
+  /* COMO UTILIZAR A CLASSE */
+  //1º crie uma varia do tipo char com o conteudo da mensagem;
   char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
-  p1.criaMensagem(0,0,1000,msg1);//instancia o metodo criarmensagem
-
+  //2º aponte o ponteiro para o metodo mensagemDisplay passando a variavel da mensagem criada
+  //o mensagemDisplay ja contem um tempo embutido, o mensagemDisplaySemEspera voce coloca o delay apos a chamada do metodo
+  p->mensagemDisplay(msg1);
+  p->mensagemDisplaySemEspera(msg1);
+  delay(2000);
 }

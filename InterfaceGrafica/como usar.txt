@@ -1,0 +1,49 @@
+ANTES DE TUDO
+Copiar os novos arquivos .cpp e .h, que estão disponiveis no GitHub, para a pasta libraries do arduino. NÃO UTILIZAR OS ARQUIVOS DA PASTA OLD
+
+-------------------------------------------
+1º Passo //No Header
+
+- Incluir o header da Interface Grafica
+Exemplo: #include <InterfaceGrafica.h>
+
+- Instanciar a classe DisplayLCD16x2 passando a pinagem correta
+Exemplo: DisplayLCD16x2 *p = new DisplayLCD16x2(12, 11, 5, 4, 3, 2); //esses sao os pinos padrões
+
+- Criar um ponteiro para uma váriavel do tipo LiquidCrystal
+Exemplo: LiquidCrystal *tela = p->getLCD();
+O método getLCD(); irá retornar a tela criada anteriormente quando instanciamos a classe DisplayLCD16x2 
+
+-------------------------------------------
+
+2º Passo //No void setup
+
+- Dar o "BEGIN" da tela criada, para o arduino saber que será utilizado uma tela.
+Exemplo: tela->begin(16, 2);//16 linhas e 2 colunas
+
+-------------------------------------------
+
+3º Passo //no void loop
+
+- Para chamar o método mensagemDisplay(char* msg) basta apenas passar uma variável do tipo char e utilizar o ponteiro criado para apontar p/ este método. Lembrando que é o ponteiro da classe DisplayLCD16x2 e não o ponteiro da váriavel LiquidCrystal
+Exemplo: 
+	char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
+  p->mensagemDisplay(msg1);//instancia o metodo criarmensagem
+
+
+-------------------------------------------
+
+Métodos Publicos da classe InterfaceGrafica:
+
+- void mensagemDisplay(char *msg);
+- void mensagemDisplaySemEspera(char *msg);
+Quando for utilizar o sem espera, deve passar o delay(3000); após o método.
+Esse "3000" foi como exemplo.
+
+Métodos publicos da Classe DisplayLCD16x2
+
+- DisplayLCD16x2(int *p1, int *p2,int *p3, int *p4,int *p5, int *p6);
+A classe DisplayLCD16x2 é filha da classe InterfaceGrafica, logo possui todos os métodos publicos da mesma. E tem em sí apenas o construtor com as pinagens de instalação do Display no arduino.
+
+-------------------------------------------
+Obs: Foi compilado no Arduino IDE porem nao foi testado com um Display e com um Arduino. O mesmo codigo não apresentou nenhum erro de compilação.

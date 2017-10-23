@@ -77,21 +77,19 @@ A estrutura do método criaMensagem está definida abaixo:
 
 ```
 criaMensagem(int linha, int coluna, int tempoDespera, char* mensagem);
+```
 Linha: 0 - primeira linha do display, 1 - segunda linha do display(por padrão já esta em 0);
 Coluna: As colunas variam entre 0 - 15 colunas;
 Tempo de Espera: O tempo é em milisegundos;
-Mensagem: Crie uma váriavel do tipo char com a sua mensagem;
-```
-
+Mensagem: Crie uma váriavel do tipo char com a sua mensagem.
 
 Para utilizar os métodos da classe basta criar um ponteiro para a mesma, passar um texto no formato char e chamar o método criaMensagem();
 ```
 InterfaceGrafica p1;//instancia um ponteiro para a classe interfaceGrafica
 char msg1[] = "Lucas de Oliveira Pereira";//cria uma variavel com a mensagem
 p1.criaMensagem(0,0,1000,msg1);//instancia o metodo criarmensagem
-
-Se um texto tiver mais de 16 colunas, ele será quebrado aonde ultrapassou para ser mostrado em outra linha.
 ```
+Se um texto conter mais de 16 colunas, ele será quebrado aonde ultrapassou para ser mostrado em outra linha.
 
 
 ### INTERFACE TECLADO
