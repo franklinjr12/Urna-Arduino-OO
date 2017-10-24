@@ -32,7 +32,8 @@ int UrnSetup::addCandidate(Candidate cand){
 
     //calculating size of the cand's name
     int nameSize = 0;
-    char* candName = cand.getName();
+    String nome = cand.getName();
+    String candName = &nome[0];
     while(candName[nameSize] != '\0') nameSize++;
 
     //searching for a free space in the memory
@@ -42,7 +43,7 @@ int UrnSetup::addCandidate(Candidate cand){
             //pos++;  //to let one '!' behind
             //writing the candidate name
             for(int i = 0; i < nameSize; i++){
-                memControler->write(candName[i], pos++);
+                memControler->write(nome[i], pos++);
             }
             //writing it's "00" votes
             memControler->write('0', pos++);
@@ -119,7 +120,7 @@ int UrnElection::getNumberCandidates()
     else return this->numberOfCandidates;
 }
 
-Candidate::Candidate* UrnElection::listCandidates(){
+Candidate* UrnElection::listCandidates(){
     // put all candidates and it's votes in a string
     //error tests
     if(memory == 0) return 0;   //null
@@ -148,26 +149,27 @@ Candidate::Candidate* UrnElection::listCandidates(){
     //=========================================================================================
 
     //putting into the candidates array
-    char nameTemp[listSize];
+    //char nameTemp[listSize];
+    char* nameTemp = new char[listSize+1]; nameTemp[listSize] = '\0';
     int voteTemp,
         numberCandidates = 0,
-        nameTempPointerControl = 0;
+        nameTempPointerControl = 0,
         pointerControl = 0;
 
     //counting candidates
     if(this->numberOfCandidates == 0)
     {
         while(namesList[pointerControl] != '\0')
-            if(namesList[pointerControl] > 47 && namesList[pointerControl] < 58){numberCandidates++; pointerControl++;}
+        {
+            if(namesList[pointerControl] >= 48 && namesList[pointerControl] <= 57){numberCandidates++; pointerControl++;}
             else pointerControl++;
-
+        }
         pointerControl = 0;
         numberCandidates /= 2;  //because each has 2 digits
         this->numberOfCandidates = numberCandidates;
     }
     //===========================================================================================
     numberCandidates = this->numberOfCandidates;
-
     //creating the array
     Candidate* candidatesList = new Candidate[numberCandidates];
 
@@ -176,17 +178,23 @@ Candidate::Candidate* UrnElection::listCandidates(){
     numberCandidates = 0;
     while(namesList[pointerControl] != '\0')
     {
-        if(namesList[pointerControl] > 47 && namesList[pointerControl] < 58)
+        if(namesList[pointerControl] >= 48 && namesList[pointerControl] <= 57)
         {
             //putting candidate's name
-            nameTemp[nameTempPointerControl+1] = '\0'
-            candidatesList[numberCandidates].setName(&nameTemp[0]);
+            nameTemp[nameTempPointerControl] = '\0';
+            //String nome = nameTemp;
+            candidatesList[numberCandidates].setName(nameTemp);
 
-            //putting candidate's vote
-            nameTemp[0] = namesList[++pointerControl];
+
+//            nome = "";
+//            nome = namesList[pointerControl+1];
+//            nome += namesList[pointerControl+2];
+//            candidatesList[numberCandidates].setVote(0);
+//            //putting candidate's vote
+            nameTemp[0] = namesList[pointerControl];
             nameTemp[1] = namesList[++pointerControl];
             nameTemp[2] = '\0';
-            candidatesList[numberCandidates].setVote(atoi(&nameTemp[0]));
+            candidatesList[numberCandidates].setVote(atoi(nameTemp));
 
             //reseting variable
             nameTempPointerControl = 0;
@@ -198,7 +206,11 @@ Candidate::Candidate* UrnElection::listCandidates(){
         }
 
         else
-            nameTemp[nameTempPointerControl++] = namesList[pointerControl++];
+        {
+            nameTemp[nameTempPointerControl] = namesList[pointerControl];
+            nameTempPointerControl++;
+            pointerControl++;
+        }
     }
     //===============================================================================================
 
@@ -206,15 +218,28 @@ Candidate::Candidate* UrnElection::listCandidates(){
 }
 
 
-int UrnElection::vote(char* name, int nameSize){
+int UrnElection::vote(Candidate cand){
      //error tests
     if(memory == 0) return -1;
     if(memControler == 0) return -1;
-    if(name == 0) return -1;
+    //=============================================
 
+    //auxiliar variables
     int flag = 0;
     int i;
     int pos = 0;
+    int nameSize = 0;
+    String nome = cand.getName();
+    char* name = &nome[0];
+    //=============================================
+
+
+
+    //counting lengh of cand's name
+    while(name[nameSize] != '\0') nameSize++;
+    //=============================================
+
+
     //schearching on the memory for the name
     while(memControler->read(pos) != '!'){
         if(memControler->read(pos) == name[0]){
